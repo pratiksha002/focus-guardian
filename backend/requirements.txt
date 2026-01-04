@@ -2,14 +2,14 @@
 # File: backend/requirements.txt
 
 # Web Framework
-fastapi==0.109.0
-uvicorn[standard]==0.27.0
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
 websockets==12.0
 
 # Computer Vision & AI
-opencv-python==4.9.0.80
-numpy==1.26.3
-mediapipe==0.10.9
+opencv-python-headless==4.8.1.78
+numpy==1.24.3
+mediapipe==0.10.8
 
 # Data Processing
 python-multipart==0.0.6
@@ -20,7 +20,7 @@ python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
 
 # Database (Optional)
-sqlalchemy==2.0.25
+sqlalchemy==2.0.23
 psycopg2-binary==2.9.9
 
 # Utilities
