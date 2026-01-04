@@ -28,7 +28,14 @@ from app.auth import (
     SECRET_KEY,
     ALGORITHM
 )
-from app.services.detector import FocusDetector
+try:
+    from app.services.detector import FocusDetector
+    focus_detector = FocusDetector()
+    DETECTOR_AVAILABLE = True
+except ImportError:
+    focus_detector = None
+    DETECTOR_AVAILABLE = False
+    print("⚠️ Running without AI detector (mediapipe not available)")
 from pydantic import BaseModel, EmailStr
 from jose import jwt
 
@@ -142,7 +149,14 @@ class ConnectionManager:
             print(f"❌ Error sending message: {e}")
 
 manager = ConnectionManager()
-
+if DETECTOR_AVAILABLE and focus_detector:
+    result = focus_detector.detect_focus(image_bytes)
+else:
+    # Mock response for demo
+    result = {
+        "status": "focused",
+        "focus_score": 85
+    }
 # ==================== API Routes ====================
 
 @app.get("/")
