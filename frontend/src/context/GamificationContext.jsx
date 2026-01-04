@@ -89,7 +89,7 @@ export const GamificationProvider = ({ children }) => {
 
       console.log(`🔄 Syncing XP to backend: ${xp} XP, Level ${level}`);
 
-      const response = await fetch('http://localhost:8000/api/user/update-xp', {
+      const response = await fetch(process.env.REACT_APP_API_URL || 'http://localhost:8000/api/user/update-xp', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

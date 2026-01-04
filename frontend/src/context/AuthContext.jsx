@@ -4,7 +4,7 @@ import { setStorageUser } from '../utils/StorageManager';
 export const AuthContext = createContext();
 
 // Use 127.0.0.1 instead of localhost to match backend
-const API_URL = 'http://localhost:8000';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
