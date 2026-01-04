@@ -1,3 +1,4 @@
+# redeploy-trigger
 """
 Focus Guardian Backend - Main Entry Point
 File location: backend/main.py (NOT backend/app/main.py)
