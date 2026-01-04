@@ -65,11 +65,24 @@ app.add_middleware(
     allow_headers=["*"],
     expose_headers=["*"]
 )
-
 # Initialize focus detector
 print("🧠 Initializing focus detector...")
-focus_detector = FocusDetector()
-print("✅ Focus detector ready")
+DETECTOR_ENABLED = False
+focus_detector = None
+
+try:
+    from app.services.detector import FocusDetector
+    focus_detector = FocusDetector()
+    DETECTOR_ENABLED = True
+    print("✅ Focus detector ready")
+except ImportError as e:
+    print(f"⚠️ Running without AI detector (mediapipe not available)")
+    DETECTOR_ENABLED = False
+    focus_detector = None
+except Exception as e:
+    print(f"⚠️ Focus detector initialization failed: {e}")
+    DETECTOR_ENABLED = False
+    focus_detector = None
 
 # ==================== Pydantic Models ====================
 
