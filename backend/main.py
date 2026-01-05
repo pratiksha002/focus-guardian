@@ -163,14 +163,7 @@ class ConnectionManager:
             print(f"❌ Error sending message: {e}")
 
 manager = ConnectionManager()
-if DETECTOR_AVAILABLE and focus_detector:
-    result = focus_detector.detect_focus(image_bytes)
-else:
-    # Mock response for demo
-    result = {
-        "status": "focused",
-        "focus_score": 85
-    }
+
 # ==================== API Routes ====================
 
 @app.get("/")
