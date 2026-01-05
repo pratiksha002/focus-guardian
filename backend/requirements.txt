@@ -27,5 +27,4 @@ psycopg2-binary==2.9.9
 # Utilities
 pydantic==2.5.3
 pydantic-settings==2.1.0
-
-pydantic[email]
+email-validator>=2.0.0
