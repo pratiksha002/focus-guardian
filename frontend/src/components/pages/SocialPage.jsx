@@ -3,7 +3,7 @@ import { Users, Trophy, Search, TrendingUp, X } from 'lucide-react';
 import { GamificationContext } from '../../context/GamificationContext';
 import { AuthContext } from '../../context/AuthContext';
 
-const API_URL = 'http://localhost:8000';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
 // Helper function to get pet emoji (not a hook - can be used anywhere)
 const getPetEmojiForLevel = (level) => {

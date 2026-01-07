@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { BarChart3, TrendingUp, Clock, Eye, AlertCircle, Activity, Zap, Target, Award } from 'lucide-react';
 import { AuthContext } from '../../context/AuthContext';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
 export const DashboardPage = () => {
   const { token } = useContext(AuthContext);
@@ -26,7 +27,9 @@ export const DashboardPage = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/stats', {
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+      // ...
+      const response = await fetch(`${API_URL}/api/stats`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
