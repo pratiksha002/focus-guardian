@@ -16,7 +16,8 @@ export const FocusModePage = () => {
   const captureIntervalRef = useRef(null);
   
   const { token } = useContext(AuthContext);
-  const wsUrl = 'ws://127.0.0.1:8000/ws/focus';
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+  const wsUrl = API_URL.replace('http://', 'ws://').replace('https://', 'wss://') + '/ws/focus';
   const { focusData, wsStatus, sendMessage } = useFocusTracker(wsUrl);
   const { onFocusDetection, onSessionComplete } = useContext(GamificationContext);
   
